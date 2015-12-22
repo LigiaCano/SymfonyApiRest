@@ -66,7 +66,6 @@ class GroupsController extends FOSRestController
     * 
     * @RequestParam(name="name", nullable=false, strict=true, description="name.")
     * @RequestParam(name="roles", nullable=false, strict=true, description="roles.")
-    * @RequestParam(name="user", nullable=true, strict=true, description="user.")
     */
     public function postGroupAction(ParamFetcher $paramFetcher)
     {
@@ -75,16 +74,21 @@ class GroupsController extends FOSRestController
         $groups->setName($paramFetcher->get('name'));
         $groups->setRoles($paramFetcher->get('roles'));
         
-        if($paramFetcher->get('user')){
-            $user = $em->getRepository('PadelBundle:Users')->find($paramFetcher->get('user'));
-            if ($user){
-                $groups->addUser($user);
-            }
-        }
-        
         $em->persist($groups);
         $em->flush();
         return new View($groups, Response::HTTP_CREATED);    
+    }
+    
+    public function postGroupUserAction($groupId, $userId) {
+        $em = $this->getDoctrine()->getManager();
+        $group = $em->getRepository('PadelBundle:Groups')->find($groupId);
+        $user = $em->getRepository('PadelBundle:Users')->find($userId);
+        if (!($group && $user)){
+            return new View('Group or User Not Found', Response::HTTP_NOT_FOUND);
+        }
+        $group->addUser($user);
+        $em->flush();
+        return new View($group, Response::HTTP_CREATED); 
     }
     
     /**

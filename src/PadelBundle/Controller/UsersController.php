@@ -81,7 +81,6 @@ class UsersController extends FOSRestController
     * @RequestParam(name="expired", nullable=false, strict=true, description="expired.")
     * @RequestParam(name="roles", nullable=false, strict=false, description="roles.")
     * @RequestParam(name="credentialsExpired", nullable=false, strict=true, description="credentialsExpired.")
-    * @RequestParam(name="group", nullable=true, strict=true, description="group.")
     */
     public function postUsersAction(ParamFetcher $paramFetcher)
     {
@@ -100,17 +99,23 @@ class UsersController extends FOSRestController
         $users->setExpired($paramFetcher->get('expired'));
         $users->setRoles($paramFetcher->get('roles'));
         $users->setCredentialsExpired($paramFetcher->get('credentialsExpired'));
-        if($paramFetcher->get('group')){
-             $group = $em->getRepository('PadelBundle:Groups')->find($paramFetcher->get('group'));
-             if ($group){
-                $users->addGroup($group);
-             }
-        }
         
         $em->persist($users);
         $em->flush();
 
         return new View($users, Response::HTTP_CREATED);      
+    }
+    
+    public function postUserGroupAction($userId, $groupId) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('PadelBundle:Users')->find($userId);
+        $group = $em->getRepository('PadelBundle:Groups')->find($groupId);
+        if (!($group && $user)){
+            return new View('Group or User Not Found', Response::HTTP_NOT_FOUND);
+        }
+        $user->addGroup($group);
+        $em->flush();
+        return new View($user, Response::HTTP_CREATED); 
     }
 
 
