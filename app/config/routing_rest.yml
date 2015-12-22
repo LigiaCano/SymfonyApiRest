@@ -1,0 +1,4 @@
+#app/config/routing_rest.yml
+Rest_Padel : 
+    type : rest
+    resource: "@PadelBundle/Resources/config/routing_rest.yml"

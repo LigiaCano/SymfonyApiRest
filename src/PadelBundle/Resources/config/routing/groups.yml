@@ -1,0 +1,30 @@
+groups:
+    path:     /
+    defaults: { _controller: "PadelBundle:Groups:index" }
+
+groups_show:
+    path:     /{id}/show
+    defaults: { _controller: "PadelBundle:Groups:show" }
+
+groups_new:
+    path:     /new
+    defaults: { _controller: "PadelBundle:Groups:new" }
+
+groups_create:
+    path:     /create
+    defaults: { _controller: "PadelBundle:Groups:create" }
+    methods:  POST
+
+groups_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PadelBundle:Groups:edit" }
+
+groups_update:
+    path:     /{id}/update
+    defaults: { _controller: "PadelBundle:Groups:update" }
+    methods:  [POST, PUT]
+
+groups_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PadelBundle:Groups:delete" }
+    methods:  [POST, DELETE]

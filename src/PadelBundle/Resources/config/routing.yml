@@ -1,0 +1,19 @@
+padel_reservations:
+    resource: "@PadelBundle/Resources/config/routing/reservations.yml"
+    prefix:   /reservations
+
+padel_users:
+    resource: "@PadelBundle/Resources/config/routing/users.yml"
+    prefix:   /users
+
+padel_courts:
+    resource: "@PadelBundle/Resources/config/routing/courts.yml"
+    prefix:   /courts
+    
+padel_groups:
+    resource: "@PadelBundle/Resources/config/routing/groups.yml"
+    prefix:   /groups
+
+padel_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PadelBundle:Default:index }

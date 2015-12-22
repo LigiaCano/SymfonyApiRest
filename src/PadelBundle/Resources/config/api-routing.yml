@@ -1,0 +1,27 @@
+## YAML Template.
+---
+
+courts : 
+  type: rest
+  resource: "@PadelBundle/Controller/CourtsController.php"
+  name_prefix:  api_
+  
+groups : 
+  type: rest
+  resource: "@PadelBundle/Controller/GroupsController.php"
+  name_prefix:  api_
+  
+users : 
+  type: rest
+  resource: "@PadelBundle/Controller/UsersController.php"
+  name_prefix:  api_
+  
+reservations : 
+  type: rest
+  resource: "@PadelBundle/Controller/ReservationsController.php"
+  name_prefix:  api_
+  
+
+  
+
+

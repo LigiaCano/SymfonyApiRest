@@ -1,0 +1,30 @@
+reservations:
+    path:     /
+    defaults: { _controller: "PadelBundle:Reservations:index" }
+
+reservations_show:
+    path:     /{id}/show
+    defaults: { _controller: "PadelBundle:Reservations:show" }
+
+reservations_new:
+    path:     /new
+    defaults: { _controller: "PadelBundle:Reservations:new" }
+
+reservations_create:
+    path:     /create
+    defaults: { _controller: "PadelBundle:Reservations:create" }
+    methods:  POST
+
+reservations_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PadelBundle:Reservations:edit" }
+
+reservations_update:
+    path:     /{id}/update
+    defaults: { _controller: "PadelBundle:Reservations:update" }
+    methods:  [POST, PUT]
+
+reservations_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PadelBundle:Reservations:delete" }
+    methods:  [POST, DELETE]

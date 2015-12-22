@@ -1,0 +1,11 @@
+# ...
+
+#REST 
+padel:
+    type : rest
+    resource: "@PadelBundle/Resources/config/api-routing.yml"
+    prefix:   /api
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,30 @@
+courts:
+    path:     /
+    defaults: { _controller: "PadelBundle:Courts:index" }
+
+courts_show:
+    path:     /{id}/show
+    defaults: { _controller: "PadelBundle:Courts:show" }
+
+courts_new:
+    path:     /new
+    defaults: { _controller: "PadelBundle:Courts:new" }
+
+courts_create:
+    path:     /create
+    defaults: { _controller: "PadelBundle:Courts:create" }
+    methods:  POST
+
+courts_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PadelBundle:Courts:edit" }
+
+courts_update:
+    path:     /{id}/update
+    defaults: { _controller: "PadelBundle:Courts:update" }
+    methods:  [POST, PUT]
+
+courts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PadelBundle:Courts:delete" }
+    methods:  [POST, DELETE]
